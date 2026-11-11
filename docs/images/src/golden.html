@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.f{width:1400px;padding:52px 60px}
+h2{font-size:36px;font-weight:700;margin-top:10px}.lead{font-size:19px;color:var(--soft);margin-top:8px}
+.shot{margin-top:26px;background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:22px}
+.shot img{width:100%;display:block;border-radius:8px;border:1px solid var(--line)}
+.labels{display:grid;grid-template-columns:repeat(3,1fr);margin-top:12px;font:600 15px "SF Mono",Menlo,monospace;text-align:center;color:var(--soft)}
+.bar{display:flex;justify-content:space-between;align-items:center;margin-top:18px;font-size:19px}
+.score{font:700 26px "SF Mono",Menlo,monospace}.score span{color:var(--clay)}
+.find{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+.fi{border-top:3px solid var(--clay);padding-top:12px;font-size:17px;line-height:1.4}.fi b{display:block;margin-bottom:3px}
+.fi.ok{border-color:var(--moss)}
+</style></head><body><div class="f">
+<div class="kicker">Golden test vs design · real compare.mjs output</div>
+<h2>The machine finds the drift. You open the image and judge.</h2>
+<p class="lead">The left frame is the captured design reference. The middle one is the build: its card padding is 6 px larger and its button is the wrong colour. The right frame is the diff.</p>
+<div class="shot"><img src="demo/compare-output.png">
+<div class="labels"><span>reference (design)</span><span>golden (implementation)</span><span>diff</span></div>
+<div class="bar"><span class="score">similarity <span>95.43 %</span></span><span class="mono" style="color:var(--soft)">node tool/design/compare.mjs golden.png reference.png</span></div></div>
+<div class="find">
+<div class="fi"><b>The score is advisory</b>Fonts rasterise differently in a browser and in the app. Healthy screens usually score 93–98 %. You still decide by looking at the diff.</div>
+<div class="fi ok"><b>What it caught here</b>Every element below the first card shifted down, and the button colour doesn't match the token. Both are structural, so both get fixed.</div>
+</div>
+</div></body></html>

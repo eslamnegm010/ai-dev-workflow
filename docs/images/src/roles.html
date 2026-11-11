@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.f{width:1200px;padding:52px 60px}
+h2{font-size:36px;font-weight:700;margin-top:10px}.lead{font-size:19px;color:var(--soft);margin-top:8px}
+.q{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:22px 24px;margin-top:22px}
+.q .h{display:flex;gap:12px;align-items:center}.q .tag{font:600 13px "SF Mono",Menlo,monospace;background:var(--ink);color:var(--paper);padding:5px 10px;border-radius:7px}
+.q .t{font-size:21px;font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.o{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.35;background:#fff}
+.o b{display:block;font-size:16px;margin-bottom:3px}.o.sel{border:2.5px solid var(--clay);background:#FCEDE6}
+.rec{font:600 11px "SF Mono",Menlo,monospace;color:var(--moss)}
+.rec2{display:flex;gap:18px;margin-top:24px;align-items:stretch}
+.file{flex:1;background:var(--ink);color:var(--paper);border-radius:16px;padding:20px 22px;font:500 14.5px/1.6 "SF Mono",Menlo,monospace;white-space:pre}
+.file .c{color:#A89C8C}.file .y{color:var(--sun)}
+</style></head><body><div class="f">
+<div class="kicker">Setup · asked once per repo</div>
+<h2>You choose who implements and who reviews</h2>
+<p class="lead">The skill asks during setup and records the answers, so every later session follows them.</p>
+<div class="q"><div class="h"><span class="tag">Implementer</span><span class="t">Who writes the code?</span></div>
+<div class="opts"><div class="o sel"><b>Agent · Opus</b><span class="rec">RECOMMENDED</span><br>Complex work, fewest fix rounds</div><div class="o"><b>Agent · Sonnet</b>Cheaper; needs plans in finer detail</div><div class="o"><b>By complexity</b>Opus for hard tasks, Sonnet for simple ones</div><div class="o"><b>Main session</b>No separate implementer</div></div></div>
+<div class="q"><div class="h"><span class="tag">Reviewer</span><span class="t">Who reviews each PR?</span></div>
+<div class="opts" style="grid-template-columns:repeat(3,1fr)"><div class="o sel"><b>Agent · Opus</b><span class="rec">RECOMMENDED</span><br>One fresh reviewer per PR</div><div class="o"><b>Agent · Sonnet</b>Lighter reviews</div><div class="o"><b>Self-review only</b>For small repos</div></div></div>
+<div class="rec2">
+<div class="file"><span class="c"># CLAUDE.md · §8 Working agreements</span>
+<span class="y">Roles</span> (asked 2026-11-11; change = new dated row)
+| Role        | Who                       | Model  |
+|-------------|---------------------------|--------|
+| Planner     | main session              | —      |
+| Implementer | implementer agent, fresh  | opus   |
+| Reviewer    | reviewer agent, one/PR    | opus   |</div>
+<div class="file"><span class="c"># .claude/agents/implementer.md</span>
+---
+name: implementer
+<span class="y">model: opus</span>
+---
+You are the implementer. You build
+exactly what the plan says, pass the
+gate, commit, and never push.</div>
+</div>
+</div></body></html>

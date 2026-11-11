@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.f{width:1400px;padding:52px 60px}
+h2{font-size:36px;font-weight:700;margin-top:10px}.lead{font-size:19px;color:var(--soft);margin-top:8px}
+.g{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;margin-top:26px}
+.file{background:var(--ink);color:var(--paper);border-radius:18px;padding:22px 26px;font:500 14.5px/1.65 "SF Mono",Menlo,monospace;white-space:pre-wrap}
+.file .c{color:#A89C8C}.file .y{color:var(--sun)}.file .r{color:#F08A66}.file .gr{color:#9CCB9C}
+.map{display:flex;flex-direction:column;gap:12px}
+.m{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:14px 18px;display:grid;grid-template-columns:230px 1fr;gap:12px;align-items:center}
+.m b{font:600 15px "SF Mono",Menlo,monospace}.m span{font-size:16px;color:var(--soft);line-height:1.35}
+</style></head><body><div class="f">
+<div class="kicker">Status files · the hand-off between sessions</div>
+<h2>A new session reads one file and knows where to resume</h2>
+<p class="lead">Updated in the same branch as the work, before every merge. Nothing important lives only in a chat.</p>
+<div class="g">
+<div class="file"><span class="c"># CLAUDE.md</span>
+<span class="y">## 6. Progress log</span>
+| 2026-11-08 | <b>Settings screen</b>: 4 toggles, rapid taps, RTL;
+|            | goldens 94.1–97.2 %; 2 review rounds | PR #42 |
+| 2026-11-10 | <b>Profile header</b>: avatar, stats, trust badge  | PR #44 |
+
+<span class="y">## 7. Current state and next step</span>
+- <span class="r">RESUME HERE:</span> notifications list.
+  Plan docs/plans/stage3-f7-notifications.md (ready).
+- Pending owner decisions: empty-state copy (D-031).
+- Follow-ups: decode avatars at display size (PR #42).
+
+<span class="y">## 8. Working agreements</span>
+- <span class="gr">Never push with errors</span> — run-gate.sh green first.
+- Roles: implementer opus · reviewer opus (2026-11-01).</div>
+<div class="map">
+<div class="m"><b>CLAUDE.md §6</b><span>What was done, by whom, with which numbers</span></div>
+<div class="m"><b>CLAUDE.md §7</b><span>RESUME HERE, the next plan, pending decisions</span></div>
+<div class="m"><b>docs/plans/*.md</b><span>One plan per PR. Status: planning → done</span></div>
+<div class="m"><b>docs/traceability/</b><span>Each screen ⬜ → 🟨 → ✅ with PR links</span></div>
+<div class="m"><b>docs/discrepancies.md</b><span>Gaps between sources: open, recommended, decided</span></div>
+<div class="m"><b>docs/adr/</b><span>Decisions other work depends on</span></div>
+</div></div>
+</div></body></html>

@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.f{width:1200px;padding:52px 60px}
+h2{font-size:36px;font-weight:700;margin-top:10px}.lead{font-size:19px;color:var(--soft);margin-top:8px}
+.term{background:var(--ink);color:var(--paper);border-radius:18px;padding:22px 28px;margin-top:26px;font:500 16px/1.7 "SF Mono",Menlo,monospace}
+.dots{display:flex;gap:8px;margin-bottom:12px}.dots i{width:12px;height:12px;border-radius:50%;background:#E0613F}.dots i:nth-child(2){background:var(--sun)}.dots i:nth-child(3){background:#6FA86F}
+.p{color:var(--sun)}.c{color:#A89C8C}
+table{width:100%;border-collapse:collapse;margin-top:14px;font-size:15.5px}
+th{text-align:start;color:#A89C8C;font-weight:600;padding:8px 10px;border-bottom:1px solid #3A342C}
+td{padding:9px 10px;border-bottom:1px solid #2E2923}
+.ok{color:#8FCB8F}.sk{color:#A89C8C}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.n{border-top:3px solid var(--ink);padding-top:12px;font-size:17px;line-height:1.4}.n b{display:block;margin-bottom:3px}
+</style></head><body><div class="f">
+<div class="kicker">Quality gate · real output</div>
+<h2>One command, one table you can paste into the PR</h2>
+<p class="lead">tool/gate/run-gate.sh runs the steps in tool/gate/steps.txt and stops at the first red one.</p>
+<div class="term"><div class="dots"><i></i><i></i><i></i></div>
+<div><span class="p">$</span> tool/gate/run-gate.sh</div>
+<div class="c">▶ validate skills · ▶ installer syntax · ▶ scaffold smoke test · ▶ design tools</div>
+<div style="margin-top:10px">Gate on <span class="p">97cd7fa</span> — <b class="ok">green</b></div>
+<table><tr><th>Step</th><th>Result</th><th>Time</th><th>Last line</th></tr>
+<tr><td>validate skills</td><td class="ok">✓ pass</td><td>0s</td><td>✓ valid</td></tr>
+<tr><td>installer syntax</td><td class="ok">✓ pass</td><td>0s</td><td>install.sh: syntax OK</td></tr>
+<tr><td>scaffold smoke test</td><td class="ok">✓ pass</td><td>0s</td><td>21 files scaffolded, no placeholders: 0</td></tr>
+<tr><td>design tools</td><td class="ok">✓ pass</td><td>1s</td><td>capture, compare, md_to_pdf: OK</td></tr>
+<tr><td>platform goldens</td><td class="sk">⏭ skipped</td><td>—</td><td class="sk">conditional (run with --only platform goldens)</td></tr>
+</table></div>
+<div class="notes">
+<div class="n"><b>Whole repo, every push</b>Clean on one package doesn't count. Red is fixed before pushing, never later.</div>
+<div class="n"><b>Conditional steps</b>Prefix with ? in steps.txt. They run with --only or --all.</div>
+<div class="n"><b>Logs per step</b>build/gate/&lt;step&gt;.log, so a failure is one file away.</div>
+</div>
+</div></body></html>
