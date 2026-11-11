@@ -1,0 +1,17 @@
+{
+  "name": "design-tools",
+  "private": true,
+  "type": "module",
+  "description": "Design reference capture, golden-vs-reference comparison and Markdown-to-PDF hand-off rendering (ai-dev-workflow).",
+  "scripts": {
+    "capture": "node capture.mjs",
+    "compare": "node compare.mjs",
+    "pdf": "node md_to_pdf.mjs"
+  },
+  "devDependencies": {
+    "marked": "^16.4.2",
+    "pixelmatch": "^7.1.1",
+    "playwright": "^1.55.0",
+    "pngjs": "^7.0.0"
+  }
+}

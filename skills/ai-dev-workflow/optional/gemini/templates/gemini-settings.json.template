@@ -1,0 +1,14 @@
+{
+  "context": {
+    "fileName": ["AGENTS.md"]
+  },
+  "model": {
+    "name": "gemini-3.1-pro-preview",
+    "maxSessionTurns": 400
+  },
+  "general": {
+    "checkpointing": {
+      "enabled": false
+    }
+  }
+}

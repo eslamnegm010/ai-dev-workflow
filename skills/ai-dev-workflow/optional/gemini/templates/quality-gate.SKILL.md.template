@@ -1,0 +1,14 @@
+---
+name: {{GATE_NAME}}
+description: The full project quality gate (linting, tests, build, and domain-specific checks). Run before reporting any task as done.
+---
+
+# {{REPO_NAME}} quality gate
+
+Run from the worktree root, in this order, each in the foreground. Fix the cause and re-run; never weaken a check.
+
+1. **Lint and format checks:** Run the project linter / typechecker.
+2. **Test suite:** Run unit and integration tests.
+3. **Build verification:** Run production build step.
+4. **Ratchet check (if used):** Ensure measured fault counts have not increased compared to baseline.
+5. **Git status:** Run `git status --short`. Verify only intended files changed and no un-gitignored artifacts remain.

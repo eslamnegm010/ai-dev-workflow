@@ -1,0 +1,14 @@
+{
+  "prototypeDir": "design/prototype",
+  "page": "Screens.html",
+  "frameSelector": "[data-frame-key]",
+  "keyAttribute": "data-frame-key",
+  "keySeparator": "-",
+  "screenMap": {},
+  "outDir": "design/reference",
+  "frameWidth": 402,
+  "minTextLength": 100,
+  "settleMs": 500,
+  "scrollPages": true,
+  "deviceScaleFactor": 1
+}

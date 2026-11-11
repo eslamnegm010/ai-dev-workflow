@@ -1,0 +1,7 @@
+# Passed with --admin-policy by implement.sh (workspace policies are disabled in Gemini CLI).
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = ["git push", "git commit", "git merge", "git rebase", "git reset", "git checkout", "git switch", "git worktree", "git remote", "git config", "gh"]
+decision = "deny"
+priority = 900
+denyMessage = "The main session owns git. Leave your changes uncommitted in the worktree."

@@ -1,0 +1,29 @@
+---
+name: gemini-implement
+description: Hand a planned {{REPO_NAME}} code task to Gemini through Antigravity CLI as the implementer, then review, gate and merge it. Use for any code task that has a plan file in docs/plans/, or when the owner says Gemini should build something.
+---
+
+# Gemini as implementer
+
+Gemini writes the code in its own worktree so it doesn't use the planner's limit. The main session keeps: the plan, review, the gate re-run, commits and merges. The scripts live in `~/.claude/skills/ai-dev-workflow/optional/gemini/` (shared by every project); this repo only holds `.claude/implementer.env`, `AGENTS.md` and the gate skill `.agents/skills/{{GATE_NAME}}/SKILL.md`.
+
+## Model
+
+`gemini-3.8-flash-high` through `agy` (`agy models` lists the rest).
+
+**If Gemini's limit runs out** (`AI credits balance too low`, or a quota error): give the same plan to a Sonnet agent (`Agent`, `model: sonnet`, `effort: medium`, `isolation: worktree`) with the brief from `AGENTS.md`.
+
+## Steps
+
+1. **Plan file** `docs/plans/<NAME>.md`, committed on the base branch, in full detail: exact files, numbers, data shapes, gate steps. Gemini can't see this conversation; everything it needs is in the plan or `AGENTS.md`.
+2. **Dispatch in the background** (`run_in_background: true`), from the repo root:
+   `~/.claude/skills/ai-dev-workflow/optional/gemini/implement.sh docs/plans/<NAME>.md <branch>`
+   It makes the worktree `~/.worktrees/{{REPO_NAME}}/<branch>`, blocks push, links the `SYMLINKS` folders, runs `agy` (3 h limit, killed after 15 min with no events) and opens a Terminal with the live view (`~/.claude/skills/ai-dev-workflow/optional/gemini/watch-latest.sh` reopens it). Logs: `~/.worktrees/{{REPO_NAME}}/_logs/<branch>-<time>.*` (`md` report, `err`, `json`, `jsonl`).
+   Exit codes: 0 success, 3 agent failure, 4 no changes, 124 timeout, 125 stalled. A non-zero exit still leaves the worktree: Gemini sometimes stalls after the work is done, so check the worktree before calling it failed.
+3. **Review:** read the report, then `git -C <worktree> diff` and the new files against the plan. Run the gate yourself; never trust the reported one.
+4. **Cut-off run** (no `.conversation` file written): take `"conversation_id"` from the first line of the run's `jsonl`, write it to `_logs/<branch-with-dashes>.conversation`, then resume with `--brief <continue note> --resume`.
+5. **Fix round:** write numbered findings to `~/.worktrees/{{REPO_NAME}}/_logs/<branch>.fix<N>.md` and run the same command with `--brief <file> --resume`. After a second failed round, start a new agent with what you learned.
+6. **Land:** commit in the worktree, merge into the base branch, `git worktree remove <path>`.
+7. **Record:** a row in `docs/agents/implementer-log.md`; then, in the merge commit, the task's state in the plan, a `docs/LOG.md` entry and `STATUS.md` (the `project-status` skill). The implementer never edits these.
+
+Optional second opinion: `implement.sh <plan> <branch> --read-only`.

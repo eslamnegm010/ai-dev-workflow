@@ -1,0 +1,5 @@
+# Put next to pubspec.yaml. CI runs `flutter test --exclude-tags platform`;
+# the recording machine also runs `flutter test --tags platform`.
+tags:
+  golden:
+  platform:

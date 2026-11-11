@@ -1,0 +1,7 @@
+# Implementer run log
+
+Track each implementer run, outcome, and fix rounds.
+
+| Date | Task | Model | Rounds | Gate on first report | Outcome / notes |
+| --- | --- | --- | --- | --- | --- |
+| YYYY-MM-DD | Feature description (`BRANCH_NAME`) | gemini-3.8-flash-high | 1 | Green | Merged cleanly; gate verified by planner. |

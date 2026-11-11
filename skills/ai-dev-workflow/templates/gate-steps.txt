@@ -1,0 +1,12 @@
+# Quality gate steps — "name | command", run in order from the repo root by tool/gate/run-gate.sh.
+# A name starting with "?" is conditional (run with --only <name> or --all), e.g. contract checks, platform goldens.
+# Use the pinned toolchain by full path. Every step must pass before any push, PR or merge.
+
+# codegen       | (cd app && dart run build_runner build -d)
+# analyze       | flutter analyze
+# format        | dart format --output=none --set-exit-if-changed lib test
+# lint          | npm run lint
+# guards        | (cd tool/guards && dart run my_guards:check_all)
+# unit tests    | npm test -- --run
+# ?platform goldens | flutter test --tags platform
+# ?contract     | (cd tool/contract && npm run check)

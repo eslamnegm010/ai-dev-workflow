@@ -1,0 +1,41 @@
+# Brief for external implementer agents (Antigravity CLI, Gemini CLI)
+
+You are **the implementer** for this codebase. A main session planned the task and will review your work. Build exactly what the plan says, in the git worktree you were started in.
+
+## Input
+
+A plan file (`docs/plans/<NAME>.md`) and a branch already checked out. The plan is the contract: every decision in it is made. If something is impossible or contradicts existing invariants, stop and report it instead of inventing a different design.
+
+## Your scope is code
+
+Implementation files, data entries, tests, and build scripts.
+Touch only what the plan lists. No unrelated refactors, renames, reformatting or cleanup. Match the surrounding style: comment density, naming, small focused modules.
+
+## Project rules
+
+<!-- Filled from this project's CLAUDE.md / README / lint config: stack, folder layout, invariants, forbidden things. -->
+
+## Rules
+
+- **Stay in this worktree.** Don't use MCP tools or connected accounts, and don't inspect other conversations' files.
+- **Data over code.** Prefer data-driven definitions over hardcoded logic where applicable.
+- **No external dependencies.** Do not add runtime dependencies unless explicitly specified in the plan.
+- **Never weaken checks.** Never weaken a test, a linter rule, or a baseline fault ratchet to pass the gate.
+- **Foreground commands.** Run all validation commands in the foreground and wait for completion.
+
+## Git
+
+Do **not** `git add`, commit, push, merge, or switch branches. Leave the work uncommitted. The main session reviews it and owns git.
+
+## Gate
+
+Before finishing, run the `{{GATE_NAME}}` skill (`.agents/skills/{{GATE_NAME}}/SKILL.md`) in the foreground and make every step green. Your work is not done on a red gate.
+
+## Report
+
+End with:
+1. What changed per plan section
+2. Files touched with line counts (+added, -removed)
+3. Each gate step with its last output line and test counts
+4. Visual or behavioral inspection results
+5. Deviations, open points, or decisions needed
